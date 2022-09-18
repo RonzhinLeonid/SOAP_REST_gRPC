@@ -44,7 +44,7 @@ namespace ClinicClient
             var createPetResponse = pet.CreatePet(new PetServiceProtos.CreatePetRequest
             {
                 Name = "Питомец",
-                ClientId = 1,
+                ClientId = createClientResponse.ClientId,
                 Birthday = Timestamp.FromDateTime(DateTime.UtcNow)
             });
             
@@ -59,24 +59,24 @@ namespace ClinicClient
                 Console.WriteLine($"{petObj.Name} >> {petObj.Birthday} {petObj.ClientId}");
             }
 
-            var createConsultationResponse = consultation.CreateConsultation(new ConsultationServiceProtos.CreateConsultationRequest
-            {
-                ClientId = 1,
-                PetId = 1,
-                ConsultationDate = Timestamp.FromDateTime(DateTime.UtcNow),
-                Description = "Консультация"
-            });
+            //var createConsultationResponse = consultation.CreateConsultation(new ConsultationServiceProtos.CreateConsultationRequest
+            //{
+            //    ClientId = 1,
+            //    PetId = 1,
+            //    ConsultationDate = Timestamp.FromDateTime(DateTime.UtcNow),
+            //    Description = "Консультация"
+            //});
 
-            Console.WriteLine($"Consultation ({createConsultationResponse.ConsultationId}) created successfully.");
+            //Console.WriteLine($"Consultation ({createConsultationResponse.ConsultationId}) created successfully.");
 
-            var getConsultationsResponse = consultation.GetConsultations(new ConsultationServiceProtos.GetConsultationsRequest());
+            //var getConsultationsResponse = consultation.GetConsultations(new ConsultationServiceProtos.GetConsultationsRequest());
 
-            Console.WriteLine("Consultations:");
-            Console.WriteLine("========\n");
-            foreach (var consObj in getConsultationsResponse.Consultations)
-            {
-                Console.WriteLine($"{consObj.ConsultationId} >> {consObj.ClientId} {consObj.PetId} {consObj.ConsultationDate} {consObj.Description} ");
-            }
+            //Console.WriteLine("Consultations:");
+            //Console.WriteLine("========\n");
+            //foreach (var consObj in getConsultationsResponse.Consultations)
+            //{
+            //    Console.WriteLine($"{consObj.ConsultationId} >> {consObj.ClientId} {consObj.PetId} {consObj.ConsultationDate} {consObj.Description} ");
+            //}
 
             Console.ReadKey();
         }

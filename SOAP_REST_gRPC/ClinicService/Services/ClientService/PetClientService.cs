@@ -1,9 +1,7 @@
 ﻿using ClinicService.Context;
 using ClinicService.Data;
-using ClinicServiceProtos;
 using Grpc.Core;
 using PetServiceProtos;
-using System;
 using static PetServiceProtos.PetClientService;
 
 namespace ClinicService.Services.ClientService
@@ -33,8 +31,8 @@ namespace ClinicService.Services.ClientService
             var pet = new Pet
             {
                 Name = request.Name,
-                Birthday = request.Birthday.ToDateTime(),
-                ClientId = request.ClientId
+                ClientId = request.ClientId,
+                Birthday = request.Birthday.ToDateTime()
         };
 
             _dbContext.Pets.Add(pet);

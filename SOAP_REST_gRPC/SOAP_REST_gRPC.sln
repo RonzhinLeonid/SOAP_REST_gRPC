@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClinicService.Context", "Cl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClinicService.Data", "ClinicService.Data\ClinicService.Data.csproj", "{B96CD664-C29F-4CF9-B466-928A1989F565}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinicClient", "..\ClinicClient\ClinicClient.csproj", "{D420B4D5-C2FC-4D74-9E48-0EEDC3845F27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClinicClient", "ClinicClient\ClinicClient.csproj", "{F27A4655-4634-460A-8F38-4E8935E65D9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,10 +53,10 @@ Global
 		{B96CD664-C29F-4CF9-B466-928A1989F565}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B96CD664-C29F-4CF9-B466-928A1989F565}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B96CD664-C29F-4CF9-B466-928A1989F565}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D420B4D5-C2FC-4D74-9E48-0EEDC3845F27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D420B4D5-C2FC-4D74-9E48-0EEDC3845F27}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D420B4D5-C2FC-4D74-9E48-0EEDC3845F27}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D420B4D5-C2FC-4D74-9E48-0EEDC3845F27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F27A4655-4634-460A-8F38-4E8935E65D9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F27A4655-4634-460A-8F38-4E8935E65D9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F27A4655-4634-460A-8F38-4E8935E65D9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F27A4655-4634-460A-8F38-4E8935E65D9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
