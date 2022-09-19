@@ -41,23 +41,23 @@ namespace ClinicClient
                 Console.WriteLine($"{clientObj.Document} >> {clientObj.Surname} {clientObj.FirstName}");
             }
 
-            var createPetResponse = pet.CreatePet(new PetServiceProtos.CreatePetRequest
-            {
-                Name = "Питомец",
-                ClientId = createClientResponse.ClientId,
-                Birthday = Timestamp.FromDateTime(DateTime.UtcNow)
-            });
+            //var createPetResponse = pet.CreatePet(new PetServiceProtos.CreatePetRequest
+            //{
+            //    Name = "Питомец",
+            //    ClientId = createClientResponse.ClientId,
+            //    Birthday = Timestamp.FromDateTime(DateTime.UtcNow)
+            //});
             
-            Console.WriteLine($"Pet ({createPetResponse.PetId}) created successfully.");
+            //Console.WriteLine($"Pet ({createPetResponse.PetId}) created successfully.");
 
-            var getPetsResponse = pet.GetPets(new PetServiceProtos.GetPetsRequest());
+            //var getPetsResponse = pet.GetPets(new PetServiceProtos.GetPetsRequest());
 
-            Console.WriteLine("Pets:");
-            Console.WriteLine("========\n");
-            foreach (var petObj in getPetsResponse.Pets)
-            {
-                Console.WriteLine($"{petObj.Name} >> {petObj.Birthday} {petObj.ClientId}");
-            }
+            //Console.WriteLine("Pets:");
+            //Console.WriteLine("========\n");
+            //foreach (var petObj in getPetsResponse.Pets)
+            //{
+            //    Console.WriteLine($"{petObj.Name} >> {petObj.Birthday} {petObj.ClientId}");
+            //}
 
             //var createConsultationResponse = consultation.CreateConsultation(new ConsultationServiceProtos.CreateConsultationRequest
             //{

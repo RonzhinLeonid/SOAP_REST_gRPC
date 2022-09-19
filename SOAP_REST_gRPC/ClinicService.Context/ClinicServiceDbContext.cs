@@ -8,6 +8,8 @@ namespace ClinicService.Context
         public virtual DbSet<Client> Clients { get; set; }
         public virtual DbSet<Pet> Pets { get; set; }
         public virtual DbSet<Consultation> Consultations { get; set; }
+        public DbSet<Account> Accounts { get; set; }
+        public DbSet<AccountSession> AccountSessions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
