@@ -22,7 +22,7 @@ namespace ClinicClient
             var authenticationResponse = authenticateServiceClient.Login(new AuthenticationRequest
             {
                 UserName = "sample@gmail.ru",
-                Password = "123451"
+                Password = "12345"
             });
 
             if (authenticationResponse.Status != 0)
