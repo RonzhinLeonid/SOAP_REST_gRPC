@@ -30,7 +30,37 @@ namespace ClinicService.Services.Impl
 
         public SessionContext GetSessionInfo(string sessionToken)
         {
-            throw new NotImplementedException();
+            SessionContext sessionContext;
+
+            lock (_sessions)
+            {
+                _sessions.TryGetValue(sessionToken, out sessionContext);
+            }
+
+            if (sessionContext == null)
+            {
+                using IServiceScope scope = _serviceScopeFactory.CreateScope();
+                ClinicServiceDbContext context = scope.ServiceProvider.GetRequiredService<ClinicServiceDbContext>();
+
+                AccountSession session = context
+                     .AccountSessions
+                     .FirstOrDefault(item => item.SessionToken == sessionToken);
+
+                if (session == null)
+                    return null;
+
+                Account account = context.Accounts.FirstOrDefault(item => item.AccountId == session.AccountId);
+
+                sessionContext = GetSessionContext(account, session);
+
+                lock (_sessions)
+                {
+                    _sessions[sessionContext.SessionToken] = sessionContext;
+                }
+
+            }
+
+            return sessionContext;
         }
 
         public AuthenticationResponse Login(AuthenticationRequest authenticationRequest)
@@ -51,7 +81,6 @@ namespace ClinicService.Services.Impl
 
             }
 
-
             if (!PasswordUtils.VerifyPassword(authenticationRequest.Password, account.PasswordSalt, account.PasswordHash))
             {
                 return new AuthenticationResponse
@@ -69,7 +98,6 @@ namespace ClinicService.Services.Impl
                 IsClosed = false,
             };
 
-
             context.AccountSessions.Add(session);
             context.SaveChanges();
 
@@ -85,9 +113,7 @@ namespace ClinicService.Services.Impl
                 Status = AuthenticationStatus.Success,
                 SessionContext = sessionContext
             };
-
         }
-
 
         private SessionContext GetSessionContext(Account account, AccountSession accountSession)
         {
@@ -125,13 +151,11 @@ namespace ClinicService.Services.Impl
             return tokenHandler.WriteToken(token);
         }
 
-
         private Account FindAccountByLogin(ClinicServiceDbContext context, string login)
         {
             return context
                 .Accounts
                 .FirstOrDefault(account => account.EMail == login);
         }
-
     }
 }
