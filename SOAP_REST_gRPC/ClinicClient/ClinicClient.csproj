@@ -8,12 +8,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="Protos\clinic.proto" />
-	  <None Remove="Protos\consultation.proto" />
-	  <None Remove="Protos\pet.proto" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="Google.Protobuf" Version="3.21.5" />
 		<PackageReference Include="Grpc.Net.Client" Version="2.48.0" />
 		<PackageReference Include="Grpc.Tools" Version="2.48.1">
@@ -23,9 +17,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Protobuf Include="Protos\clinic.proto" />
-	  <Protobuf Include="Protos\consultation.proto" />
-	  <Protobuf Include="Protos\pet.proto" />
+	  <Protobuf Include="..\ClinicService\Protos\auth.proto" GrpcServices="Client">
+	    <Link>Protos\auth.proto</Link>
+	  </Protobuf>
+	  <Protobuf Include="..\ClinicService\Protos\clinic.proto" GrpcServices="Client">
+	    <Link>Protos\clinic.proto</Link>
+	  </Protobuf>
+	  <Protobuf Include="..\ClinicService\Protos\consultation.proto" GrpcServices="Client">
+	    <Link>Protos\consultation.proto</Link>
+	  </Protobuf>
+	  <Protobuf Include="..\ClinicService\Protos\pet.proto" GrpcServices="Client">
+	    <Link>Protos\pet.proto</Link>
+	  </Protobuf>
 	</ItemGroup>
 
 </Project>

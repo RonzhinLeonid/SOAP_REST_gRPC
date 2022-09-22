@@ -1,11 +1,13 @@
 ﻿using ClinicService.Context;
 using ClinicService.Data;
 using Grpc.Core;
+using Microsoft.AspNetCore.Authorization;
 using PetServiceProtos;
 using static PetServiceProtos.PetClientService;
 
 namespace ClinicService.Services.ClientService
 {
+    [Authorize]
     public class PetClientService : PetClientServiceBase
     {
         #region Serives
@@ -55,7 +57,7 @@ namespace ClinicService.Services.ClientService
             {
                 PetId = pet.PetId,
                 Name = pet.Name,
-                Birthday = Google.Protobuf.WellKnownTypes.Timestamp.FromDateTime(pet.Birthday),
+                Birthday = Google.Protobuf.WellKnownTypes.Timestamp.FromDateTime(pet.Birthday.ToUniversalTime()),
                 ClientId = pet.ClientId
             }).ToList());
 
@@ -63,3 +65,4 @@ namespace ClinicService.Services.ClientService
         }
     }
 }
+//Birthday = Timestamp.FromDateTime(DateTime.UtcNow)
